@@ -1,0 +1,16 @@
+screenshots
+runtime/database.sqlite
+README.md
+.idea
+.gitignore
+.git
+Dockerfile
+.dockerignore
+vendor
+rr
+runtime
+.phpunit.result.cache
+.phpunit.cache
+.deptrac.cache
+.phpunit.cache/
+tests

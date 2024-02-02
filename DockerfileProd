@@ -1,0 +1,18 @@
+FROM ghcr.io/roadrunner-server/roadrunner:2023.3.10 AS roadrunner
+FROM php:8.2-cli
+COPY --from=composer /usr/bin/composer /usr/bin/composer
+COPY --from=roadrunner /usr/bin/rr /usr/local/bin/rr
+COPY . /var/www/html
+WORKDIR /var/www/html
+RUN apt-get update && apt-get install -y libzip-dev
+RUN docker-php-ext-install -j$(nproc) sockets pdo_mysql zip
+RUN composer --version && php -v
+RUN composer install --no-scripts
+RUN php app.php cache:clean
+RUN php app.php migrate:init
+RUN php app.php db:table migrations
+RUN php app.php migrate --force
+RUN php app.php db:list
+
+EXPOSE 3000
+ENTRYPOINT ["rr", "serve", "-c", ".rr-prod.yaml"]

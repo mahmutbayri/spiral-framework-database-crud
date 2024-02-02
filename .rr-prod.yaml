@@ -1,0 +1,28 @@
+version: '3'
+logs:
+  mode: production
+  level: warn
+rpc:
+    listen: 'tcp://127.0.0.1:6001'
+http:
+    address: '0.0.0.0:3000'
+    middleware:
+        - gzip
+        - static
+    static:
+        dir: public
+        forbid:
+            - .php
+            - .htaccess
+server:
+    command: 'php app.php'
+    relay: pipes
+    pool:
+      debug: false
+      num_workers: 5
+    env:
+      - APP_ENV: prod
+      - DEBUG: false
+      - VERBOSITY_LEVEL: basic
+metrics:
+    address: '127.0.0.1:2112'

@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <title>Hello, world!</title>
+</head>
+<body>
+<nav class="py-2 border-bottom" style="background-color: #7952b3;">
+    <div class="container d-flex flex-wrap">
+        <ul class="nav me-auto">
+            <li class="nav-item">
+                <a href="/tasks" class="nav-link link-light px-2 active" aria-current="page">Spiral Framework CRUD Example</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<div class="container mt-5">
+    {% block content %}{% endblock %}
+    <p class="text-end fs-6 fw-lighter"><a href="https://github.com/mahmutbayri/framework-x-database-crud" target="_blank">
+        <img width="15" src="https://github.githubassets.com/favicons/favicon.png" alt="Github logo" /></a> | v0.3
+    </p>
+</div>
+</body>
+</html>
